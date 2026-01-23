@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block title %}My Dashboard | CinemaPulse{% endblock %}
+
+{% block content %}
+<div class="admin-dashboard user-mode">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+        <div class="header-text">
+            <h1 class="text-gradient">Welcome back, {{ user.name }} 🎬</h1>
+            <p class="dashboard-subtext">
+                Favorite Genre: {{ user.favorite_genre }} | Age Group: {{ user.age_group }}
+            </p>
+        </div>
+        <div class="live-indicator">
+            <span class="pulse-dot"></span>
+            <span>Live</span>
+        </div>
+    </header>
+
+    <!-- USER STATS -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-film"></i></div>
+            <div>
+                <h3>Available Movies</h3>
+                <p>{{ stats.total_movies }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-comments"></i></div>
+            <div>
+                <h3>Your Reviews</h3>
+                <p>{{ stats.total_reviews }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card" style="border-color: rgba(255, 107, 107, 0.3);">
+            <div class="stat-icon" style="color:#FF6B6B;">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div>
+                <h3>My Favorites</h3>
+                <p>{{ stats.total_favorites }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="dashboard-layout">
+
+        <section class="main-column" style="grid-column: span 2;">
+
+            <!-- SEARCH & FILTER -->
+            <div class="controls-bar">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search movies..." class="movie-search">
+                </div>
+                <select class="movie-filter">
+                    <option value="all">All Genres</option>
+                    <option value="action">Action</option>
+                    <option value="drama">Drama</option>
+                </select>
+            </div>
+
+            <!-- MOVIE GRID -->
+            <div class="movie-feed-grid">
+                {% for movie in movies %}
+                <div class="movie-card" data-genre="{{ movie.genre|lower }}">
+                    <!-- FAVORITE HEART -->
+                    <div class="favorite-btn"
+                        onclick="toggleFavorite('{{ movie.id }}', this)">
+                        <i class="{{ 'fas' if movie.is_favorite else 'far' }} fa-heart"></i>
+                    </div>
+                    <!-- POSTER -->
+                    <div class="poster-wrapper">
+                        <img src="{{ movie.image }}" class="movie-poster">
+                        <div class="poster-overlay">
+                            <span class="rating-badge">⭐ {{ movie.rating }}</span>
+                        </div>
+                    </div>
+
+                    <!-- CONTENT -->
+                    <div class="movie-content">
+
+                        <!-- ================= MOVIE ANALYTICS ================= -->
+                        <div class="analytics-panel">
+                            <div class="score-box">
+                                <span class="score-title">CinemaPulse Score</span>
+                                <span class="score-value">
+                                    {{ movie.analytics.score if movie.analytics else 0 }}/100
+                                </span>
+                            </div>
+
+                            <div class="trend-box {{ movie.analytics.trend|lower|replace(' ', '-') if movie.analytics else 'stable' }}">
+                                <i class="fas fa-chart-line"></i>
+                                {{ movie.analytics.trend if movie.analytics else "Stable" }}
+                            </div>
+
+                            <div class="breakdown-bar">
+                                <div class="positive" style="width: {{ movie.analytics.breakdown.positive if movie.analytics else 0 }}%"></div>
+                                <div class="neutral"  style="width: {{ movie.analytics.breakdown.neutral if movie.analytics else 0 }}%"></div>
+                                <div class="negative" style="width: {{ movie.analytics.breakdown.negative if movie.analytics else 0 }}%"></div>
+                            </div>
+
+                            <div class="breakdown-labels">
+                                <span>😊 {{ movie.analytics.breakdown.positive if movie.analytics else 0 }}%</span>
+                                <span>😐 {{ movie.analytics.breakdown.neutral if movie.analytics else 0 }}%</span>
+                                <span>😞 {{ movie.analytics.breakdown.negative if movie.analytics else 0 }}%</span>
+                            </div>
+                        </div>
+
+                        <!-- ================= MOVIE HEADER ================= -->
+                        <div class="movie-header">
+                            <div class="header-top">
+                                <h2>{{ movie.name }}</h2>
+                            </div>
+                            <span class="movie-meta">
+                                <span class="tag genre-tag">{{ movie.genre }}</span>
+                                <span class="tag lang-tag">{{ movie.language }}</span>
+                            </span>
+                        </div>
+
+                        <!-- ================= FEEDBACK ================= -->
+                        <div class="feedback-section">
+                            <h4 class="section-label">Recent Feedback</h4>
+                            <div class="feedback-list">
+                                {% if movie.feedbacks %}
+                                    {% for fb in movie.feedbacks %}
+                                    <div class="feedback-bubble">
+                                        <div>
+                                            <p><strong>Rating:</strong> ⭐ {{ fb.rating }}</p>
+                                            <p>{{ fb.comment }}</p>
+                                            <small style="color:#888;">
+                                                By: {{ fb.user_email }} | {{ fb.timestamp }}
+                                            </small>
+                                            <p style="font-size:0.75rem; color:#FFE66D;">
+                                                AI Sentiment: {{ fb.sentiment }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="no-feedback">No feedback yet.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="movie-actions">
+                            <button class="primary-btn"
+                                    onclick="openFeedbackModal('{{ movie.name }}')">
+                                <i class="fas fa-pen"></i> Write Review
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- MY FEEDBACK HISTORY -->
+            <div class="panel-card" style="margin-top:2rem;">
+                <h3>My Recent Reviews</h3>
+                {% if feedback_history %}
+                    {% for fb in feedback_history[:5] %}
+                    <div class="feedback-bubble">
+                        <p><strong>{{ fb.movie_name }}</strong> – {{ fb.comment }}</p>
+                        <small>⭐ {{ fb.rating }} | {{ fb.sentiment }} | {{ fb.timestamp }}</small>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-feedback">You haven't reviewed any movie yet.</p>
+                {% endif %}
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div class="movie-modal" id="feedbackModal">
+    <form class="modal-box" method="POST" action="/movie/feedback/add">
+        <div class="modal-header">
+            <h2><i class="fas fa-star"></i> Rate & Review</h2>
+            <button type="button" class="close-icon" onclick="closeFeedbackModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <input type="hidden" name="movie_name" id="movieNameInput">
+
+        <div class="form-group">
+            <label>Your Rating</label>
+            <input type="number" name="rating" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label>Your Review</label>
+            <input type="text" name="comment" required>
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="cancel-btn" onclick="closeFeedbackModal()">Cancel</button>
+            <button type="submit" class="save-btn">Submit</button>
+        </div>
+    </form>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_style.css') }}">
+
+{% endblock %}

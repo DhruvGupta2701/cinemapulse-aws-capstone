@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+CinemaPulse | Real-Time Feedback Analysis
+{% endblock %}
+
+{% block content %}
+
+<header class="hero">
+    <div class="hero-content">
+        <h1 class="fade-in">
+            Feel the <span class="text-pink">Beat</span> of the Box Office
+        </h1>
+        <p class="fade-in delay-1">
+            Real-Time Customer Feedback Analysis Powered by AWS
+        </p>
+        <!-- will use later
+        <div class="hero-buttons fade-in delay-2">
+            <button class="btn-primary">
+                Watch Demo <i class="fa-solid fa-play"></i>
+            </button>
+            <button class="btn-secondary">
+                View Documentation
+            </button>
+        </div>
+    -->
+    </div>
+
+    <div class="hero-visual fade-in delay-3">
+        <div class="projector-light"></div>
+        <i class="fa-solid fa-cloud fa-5x floating-icon cloud-icon"></i>
+        <i class="fa-solid fa-chart-line fa-4x floating-icon chart-icon"></i>
+        <i class="fa-solid fa-clapperboard fa-3x floating-icon heart-icon"></i>
+
+    </div>
+</header>
+
+<section id="features" class="features-section">
+    <div class="section-header">
+        <h2>The <span class="text-mint">Showtime</span> Capabilities</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div class="card-grid">
+        <div class="glass-card scroll-animate">
+            <div class="icon-box color-pink">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3>Elastic Scale</h3>
+            <p>
+                <strong>Powered by AWS EC2.</strong>
+                Whether it's an indie debut or a global blockbuster,
+                our infrastructure scales automatically to handle spikes
+                in viewer feedback without missing a frame.
+            </p>
+        </div>
+
+        <div class="glass-card scroll-animate">
+            <div class="icon-box color-mint">
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <h3>Real-Time Analytics</h3>
+            <p>
+                <strong>Powered by Amazon RDS.</strong>
+                Capture reviews and sentiment instantly.
+                Studios get a live feed of audience reactions,
+                enabling data-driven decisions before the credits roll.
+            </p>
+        </div>
+
+        <div class="glass-card scroll-animate">
+            <div class="icon-box color-yellow">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h3>Secure Access</h3>
+            <p>
+                <strong>Secured by AWS IAM.</strong>
+                Your proprietary audience data is locked behind studio-grade
+                permissions. Only producers and analysts get the VIP pass
+                to critical insights.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="tech-stack" class="tech-strip">
+    <div class="marquee-content">
+        <span><i class="fa-brands fa-aws"></i> AWS EC2</span>
+        <span><i class="fa-solid fa-server"></i> Amazon RDS</span>
+        <span><i class="fa-solid fa-python"></i> Flask</span>
+        <span><i class="fa-brands fa-react"></i> React</span>
+        <span><i class="fa-solid fa-key"></i> AWS IAM</span>
+        <span><i class="fa-brands fa-aws"></i> AWS EC2</span>
+        <span><i class="fa-solid fa-server"></i> Amazon RDS</span>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2026 CinemaPulse Project. All Rights Reserved.</p>
+        <div class="socials">
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Register | CinemaPulse{% endblock %}
+
+{% block content %}
+<div class="page-bg">
+    <div class="auth-box fade-in">
+
+        <div class="auth-icon">🎬</div>
+
+        <h2>Create Your Account</h2>
+        <p class="auth-subtext">Join CinemaPulse and feel the pulse of cinema</p>
+
+        <form method="POST" action="/register">
+
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your full name" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Favorite Genre</label>
+            <select name="favorite_genre" required>
+                <option value="">Select your favorite genre</option>
+                <option>Action</option>
+                <option>Drama</option>
+                <option>Comedy</option>
+                <option>Thriller</option>
+                <option>Romance</option>
+                <option>Sci-Fi</option>
+                <option>Horror</option>
+                <option>Animation</option>
+            </select>
+
+            <label>Age Group</label>
+            <select name="age_group" required>
+                <option value="">Select your age group</option>
+                <option>Under 18</option>
+                <option>18–25</option>
+                <option>26–35</option>
+                <option>36–50</option>
+                <option>50+</option>
+            </select>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a secure password" required>
+
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" placeholder="Re-enter your password" required>
+
+            <button type="submit" class="btn-primary full-btn">
+                Create Account
+            </button>
+        </form>
+
+        <p class="switch-auth">
+            Already have an account?
+            <a href="/login">Sign in here</a>
+        </p>
+
+    </div>
+</div>
+{% endblock %}

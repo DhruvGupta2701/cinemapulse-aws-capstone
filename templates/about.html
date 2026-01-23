@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Project | CinemaPulse</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Indexstyle.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <i class="fa-solid fa-film pulse-icon"></i> Cinema<span class="text-highlight">Pulse</span>
+        </a>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#story">The Story</a></li>
+        <li><a href="#specs">Tech Rider</a></li>
+    </ul>
+
+    <div class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</nav>
+
+<div class="page-bg">
+    
+    <div class="about-hero fade-in">
+        <h1>Behind the <span class="text-mint">Scenes</span></h1>
+        <p style="color: #b3b3b3; font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">
+            Building the infrastructure for real-time audience sentiment.
+        </p>
+    </div>
+
+    <div class="content-container">
+
+        <section id="story" class="story-grid scroll-animate">
+            <div class="text-content">
+                <h2 class="text-pink">The Vision</h2>
+                <br>
+                <p style="line-height: 1.8; color: #ddd;">
+                    CinemaPulse isn't just a database; it's a dynamic platform designed to bridge the gap between film studios and their audience. 
+                    <br><br>
+                    During blockbuster releases, viewer feedback spikes unpredictably. Traditional analysis tools often crash under the load or provide data too late. CinemaPulse leverages <strong>AWS Cloud Native</strong> solutions to capture every reaction, rating, and review in real-time, ensuring producers get the "Director's Cut" of the data instantly.
+                </p>
+            </div>
+            <div class="visual-content">
+                <div class="glass-card" style="text-align: center; border-color: var(--primary-mint);">
+                    <i class="fa-brands fa-aws fa-5x text-mint" style="margin-bottom: 1rem;"></i>
+                    <h3>Cloud Native Architecture</h3>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">
+                        Flask Backend <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem; margin: 0 5px;"></i> 
+                        AWS EC2 <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem; margin: 0 5px;"></i> 
+                        RDS MySQL
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="specs" class="scroll-animate">
+            <h2 style="text-align: center;">Production <span class="text-yellow">Requirements</span></h2>
+            <div class="underline" style="margin-bottom: 2rem;"></div>
+
+            <div class="glass-card">
+                <div class="story-grid" style="margin-bottom: 0; gap: 2rem;">
+                    
+                    <div class="tech-rider">
+                        <h4><i class="fa-solid fa-microchip"></i> Hardware Required</h4>
+                        <ul class="tech-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>Processor:</strong> Intel i5 or equivalent (Min)</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>RAM:</strong> 4GB (8GB recommended for MERN)</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Storage:</strong> 128 GB SSD/HDD</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Network:</strong> High-speed (10 Mbps+)</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Audio/Visual:</strong> Projector & Mic system</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-rider" style="border-left-color: var(--primary-mint);">
+                        <h4><i class="fa-solid fa-code"></i> Software Stack</h4>
+                        <ul class="tech-list">
+                            <li><i class="fa-brands fa-python"></i> <strong>Backend:</strong> Python & Flask</li>
+                            <li><i class="fa-solid fa-database"></i> <strong>Database:</strong> Amazon RDS (MySQL)</li>
+                            <li><i class="fa-brands fa-aws"></i> <strong>Infrastructure:</strong> AWS EC2 (Elastic Compute)</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> <strong>Security:</strong> AWS IAM Role-Based Access</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="back-btn-wrapper fade-in delay-2">
+            <a href="/" class="btn-primary">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2026 CinemaPulse Project. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/Indexscript.js') }}"></script>
+
+</body>
+</html>

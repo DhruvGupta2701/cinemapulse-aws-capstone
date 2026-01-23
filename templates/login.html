@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Login | CinemaPulse{% endblock %}
+
+{% block content %}
+<div class="page-bg">
+
+    <div class="auth-box fade-in">
+
+        <!-- ICON -->
+        <div class="auth-icon">🎬</div>
+
+        <h2>Welcome Back</h2>
+        <p class="auth-subtext">Sign in to feel the pulse of CinemaPulse</p>
+
+        <form method="POST" action="/login">
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <div class="auth-row">
+                <label class="remember">
+                    <input type="checkbox"> 
+                    <span>Keep me signed in</span>
+                </label>
+                <a href="#" class="link">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn-primary full-btn">
+                Login
+            </button>
+        </form>
+
+        <p class="switch-auth">
+            New to CinemaPulse?
+            <a href="/register">Create an account</a>
+        </p>
+
+        <div class="divider">or continue with</div>
+
+        <div class="social-buttons">
+            <button class="social google">
+                <i class="fa-brands fa-google"></i> Google
+            </button>
+            <button class="social facebook">
+                <i class="fa-brands fa-facebook"></i> Facebook
+            </button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
