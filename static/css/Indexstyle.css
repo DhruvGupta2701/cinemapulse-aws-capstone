@@ -1,10 +1,10 @@
 /* --- Variables & Reset --- */
 :root {
-    --bg-dark: #1A1A2E;     /* Midnight Indigo */
+    --bg-dark: #000000;
     --bg-card: rgba(255, 255, 255, 0.05);
-    --primary-pink: #FF6B6B; /* Pastel Neon Pink */
-    --primary-mint: #4ECDC4; /* Cyber Mint */
-    --primary-yellow: #FFE66D; /* Popcorn Yellow */
+    --primary-pink: #e82424; /* Pastel Neon Pink */
+    --primary-mint: #f6ff00; /* Cyber Mint */
+    --primary-yellow: #c969fa; /* Popcorn Yellow */
     --text-white: #ffffff;
     --text-gray: #b3b3b3;
 }
@@ -44,10 +44,10 @@ h1, h2, h3 {
     padding: 1.5rem 5%;
     position: sticky;
     top: 0;
-    background: rgba(26, 26, 46, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(198, 12, 12, 0.347);
 }
 
 .logo {
@@ -130,7 +130,7 @@ h1, h2, h3 {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255,107,107,0.2) 0%, rgba(26,26,46,0) 70%);
+    background: radial-gradient(circle, rgba(199, 37, 37, 0.274) 0%, rgba(26,26,46,0) 70%);
     z-index: -1;
 }
 
@@ -269,7 +269,7 @@ h1, h2, h3 {
 footer {
     padding: 3rem 10%;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(25, 2, 54, 0.05);
     margin-top: 2rem;
 }
 
@@ -547,11 +547,11 @@ footer {
 }
 
 .contact-form-wrapper {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(219, 18, 18, 0.821);
     backdrop-filter: blur(12px);
     padding: 3.2rem;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(7, 0, 0, 0.701);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     width: 100%;
 }
@@ -573,8 +573,8 @@ footer {
 .contact-form-wrapper textarea {
     width: 100%;
     padding: 18px 20px;
-    background: #111122;
-    border: 1px solid rgba(255,255,255,0.2);
+    background: #000000e0;
+    border: 1px solid rgba(0, 0, 0, 0.693);
     border-radius: 12px;
     color: #ffffff;
     font-size: 1.15rem;
