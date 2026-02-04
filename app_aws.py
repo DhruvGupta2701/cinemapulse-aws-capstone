@@ -13,8 +13,8 @@ AWS_REGION = "us-east-1"
 dynamodb = boto3.resource("dynamodb", region_name=AWS_REGION)
 sns = boto3.client("sns", region_name=AWS_REGION)
 
-USERS_TABLE = dynamodb.Table("CinemaPulseUsers")
-FEEDBACK_TABLE = dynamodb.Table("CinemaPulseFeedback")
+USERS_TABLE = dynamodb.Table("USERS_TABLE")
+FEEDBACK_TABLE = dynamodb.Table("FEEDBACK_TABLE")
 
 SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:140023381752:Cinemapulse_topic"
 
