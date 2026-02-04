@@ -79,6 +79,28 @@ def register():
         }
     )
     return redirect(url_for("login"))
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "GET":
+        return render_template("register.html")
+
+    try:
+        USERS_TABLE.put_item(
+            Item={
+                "email": request.form["email"],
+                "name": request.form["name"],
+                "password": request.form["password"],
+                "favorite_genre": request.form["favorite_genre"],
+                "age_group": request.form["age_group"],
+                "created_at": str(datetime.utcnow())
+            }
+        )
+        return redirect(url_for("login"))
+
+    except Exception as e:
+        print("DynamoDB Error:", e)
+        return "Registration failed", 500
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
