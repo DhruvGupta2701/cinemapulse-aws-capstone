@@ -16,7 +16,7 @@ sns = boto3.client("sns", region_name=AWS_REGION)
 USERS_TABLE = dynamodb.Table("USERS_TABLE")
 FEEDBACK_TABLE = dynamodb.Table("FEEDBACK_TABLE")
 
-SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:140023381752:Cinemapulse_topic"
+SNS_TOPIC_ARN = "arn:aws:iam::140023381752:role/custom_user_role"
 
 # ================= MOVIES (STATIC – OK FOR EXAM) =================
 movies = {
